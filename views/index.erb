@@ -9,11 +9,21 @@
 				margin: 10% 0;
 				text-align: center;
 			}
+			
+			canvas {
+				border: 1px solid #999;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="wrap">
-			<canvas id="particles" width="400" height="400">your browser does not support the canvas tag </canvas>
+			<h3>HTML5 Particle System Experiment</h3>
+			<canvas id="particles" width="450" height="450">your browser does not support the canvas tag </canvas>
+			<br>
+			<a id="add-particles" href="#">Add 1000 particles</a>
+			<br>
+			<a id="remove-particles" href="#">Remove 1000 particles</a>
+			<p>Currently <span id="num-particles"></span> particles showing</p>
 		</div>
 	</body>
 </html>
