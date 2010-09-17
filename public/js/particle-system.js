@@ -21,9 +21,7 @@ particleSystem.prototype.addParticles = function(numParticles) {
 	for (var i = 0; i < numParticles; i++) {
 		this.particles.push(new particle(this));
 	}
-
-	// numSpan = document.getElementById("num-particles");
-	// numSpan.innerHTML = this.numParticles();
+	this.world.worldUpdated.call(this);
 };
 
 particleSystem.prototype.removeParticles = function(numParticles) {
@@ -34,9 +32,7 @@ particleSystem.prototype.removeParticles = function(numParticles) {
 	if (this.particles.length == 0) {
 		this.world.clear();
 	}
-
-	// numSpan = document.getElementById("num-particles");
-	// numSpan.innerHTML = this.numParticles();
+	this.world.worldUpdated.call(this);
 };
 
 particleSystem.prototype.numParticles = function() {

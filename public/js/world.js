@@ -3,7 +3,7 @@ var world = function(options) {
 	this.context = this.canvas.getContext("2d");
 	this.doClearEachFrame = options.clearEachFrame;
 	this.fullWindow = options.fullWindow;
-	
+	this.worldUpdated = options.updated;
 	var self = this;
 
 	if (this.fullWindow) {
@@ -46,3 +46,4 @@ world.prototype.resize = function(width, height) {
 	this.canvas.height = height;
 	this.clear();
 };
+

@@ -6,7 +6,12 @@
 		initialParticles: 1000,
 		clearEachFrame: true,
 		speed: 33, // 30 FPS
-		fullWindow: true
+		fullWindow: true,
+		updated: function() {
+			// alert("updated");
+			// numSpan = document.getElementById("num-particles");
+			// numSpan.innerHTML = this.numParticles();
+		}
 	});
 			
 	$("#add-particles").click(function(e) {
