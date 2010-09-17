@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Particle System</title>
-		<script src="particle-system.js"></script>
-		<style>
-			div.wrap {
-				width: 100%;
-				margin: 10% 0;
-				text-align: center;
-			}
-			
-			canvas {
-				border: 1px solid #999;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="wrap">
-			<h3>HTML5 Particle System Experiment</h3>
-			<canvas id="particles" width="450" height="450">your browser does not support the canvas tag </canvas>
-			<br>
-			<a id="add-particles" href="#">Add 1000 particles</a>
-			<br>
-			<a id="remove-particles" href="#">Remove 1000 particles</a>
-			<p>Currently <span id="num-particles"></span> particles showing</p>
-		</div>
-	</body>
-</html>
+<canvas id="particles" width="450" height="450">your browser does not support the canvas tag </canvas>
+<div id="status">
+	<p>Currently <span id="num-particles"></span> particles showing</p>
+</div>
+<div id="tools">
+	<a id="add-particles" href="#">Add 1000 particles</a>
+	<a id="remove-particles" href="#">Remove 1000 particles</a>
+</div>
+

@@ -1,0 +1,11 @@
+div#container {
+	margin: 5% 15%;
+}
+
+canvas {
+	border: 1px solid #999;
+}
+
+div#tools a {
+	display: block;
+}
