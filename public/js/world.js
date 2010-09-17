@@ -9,7 +9,7 @@ var world = function(options) {
 	if (this.fullWindow) {
 		this.resize(window.innerWidth-20, window.innerHeight-20);
 		window.addEventListener("resize", function() {
-			self.resize(window.innerWidth-20, window.innerHeight-20);
+			self.resize(window.innerWidth-20, window.innerHeight-10);
 		}, false);
 	}
 	
