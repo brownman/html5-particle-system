@@ -1,11 +1,38 @@
+
 div#container {
-	margin: 5% 15%;
+	position: relative;
+	z-index: 1;
+	width: 100%;
 }
 
-canvas {
-	border: 1px solid #999;
+header {
+	position: absolute;
+	z-index: 2;
+	padding: 1em;
+	top: 2%;
+	left: 2%;
+	background-color: white;
+	border: 2px solid black;
 }
 
-div#tools a {
-	display: block;
+header h1 {
+	margin: 0;
+	padding: 0;
+}
+
+
+div#interface {
+	position: absolute;
+	z-index: 2;
+	padding: 1em 0;
+	width: 20%;
+	background-color: rgba(225,225,225,.8);
+	top: 0;
+	right: 0;
+	border: 1px solid black;
+}
+
+div#interface ul li {
+	padding: .33em 0;
+	opacity: 1;
 }

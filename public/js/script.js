@@ -1,16 +1,35 @@
-(function($){	
-    var canvas = $("#particles").get(0);
-    var loop = new mainLoop(16, canvas); // 60 FPS
-   	
+(function($){
+	canvasEl = $("#particles").get(0);
+	
+   	world = new world({
+		canvasEl: canvasEl,
+		initialParticles: 1000,
+		clearEachFrame: true,
+		speed: 33, // 30 FPS
+		fullWindow: true
+	});
+			
 	$("#add-particles").click(function(e) {
 		e.preventDefault();
-		loop.ps.addParticles(1000);
+		world.ps.addParticles(1000);
 	});
 	
 	$("#remove-particles").click(function(e) {
 		e.preventDefault();
-		loop.ps.removeParticles(1000);
+		world.ps.removeParticles(1000);
 	});
+	
+	$("#clear-each-frame").click(function(e) {
+		e.preventDefault();
+		world.toggleClearEachFrame();
+	});
+	
+	$("#clear").click(function(e) {
+		e.preventDefault();
+		world.clear();
+	});
+	
+	$("header").fadeOut(4000);
 })(window.jQuery);
 
 

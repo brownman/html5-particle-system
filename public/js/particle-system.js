@@ -1,8 +1,7 @@
-var particleSystem = function(canvas, amount) {
-	this.canvas = canvas;
-	this.context = this.canvas.getContext("2d");
+var particleSystem = function(world, amount) {
+	this.world = world;
 	this.particles = [];
-    this.addParticles(1000);
+    this.addParticles(amount);
 };
 
 particleSystem.prototype.update = function() {
@@ -18,23 +17,26 @@ particleSystem.prototype.draw = function() {
 };
 
 particleSystem.prototype.addParticles = function(numParticles) {
-    console.log("adding ", numParticles);
+    log("adding ", numParticles);
 	for (var i = 0; i < numParticles; i++) {
-		this.particles.push(new particle(this.canvas));
+		this.particles.push(new particle(this));
 	}
-	this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-	numSpan = document.getElementById("num-particles");
-	numSpan.innerHTML = this.numParticles();
+
+	// numSpan = document.getElementById("num-particles");
+	// numSpan.innerHTML = this.numParticles();
 };
 
 particleSystem.prototype.removeParticles = function(numParticles) {
-    console.log("removing ", numParticles);
+    log("removing ", numParticles);
 	for (var i = 0; i < numParticles; i++) {
 		this.particles.pop();
 	}
-	numSpan = document.getElementById("num-particles");
-	this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-	numSpan.innerHTML = this.numParticles();
+	if (this.particles.length == 0) {
+		this.world.clear();
+	}
+
+	// numSpan = document.getElementById("num-particles");
+	// numSpan.innerHTML = this.numParticles();
 };
 
 particleSystem.prototype.numParticles = function() {

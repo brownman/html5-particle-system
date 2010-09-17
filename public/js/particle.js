@@ -1,15 +1,15 @@
-var particle = function(canvas) {
-	this.canvas = canvas;
-	this.context = this.canvas.getContext("2d");
-	this.x = Math.random() * this.canvas.width;
-	this.y = Math.random() * this.canvas.height;
+var particle = function(parent) {
+	this.world = world;
+	this.parent = parent;
+	this.x = Math.random() * this.parent.world.canvas.width;
+	this.y = Math.random() * this.parent.world.canvas.height;
 
 	this.dx = (Math.random() * 2) - 1;
 	this.dy = (Math.random() * 2) - 1;
 };
 
 particle.prototype.update = function() {
-	if (this.x > this.canvas.width || this.x < 0 || this.y > this.canvas.height || this.y < 0) {
+	if (this.x > this.parent.world.canvas.width || this.x < 0 || this.y > this.parent.world.canvas.height || this.y < 0) {
 	    this.dx = -(this.dx);
 	    this.dy = -(this.dy);
 	}
@@ -18,5 +18,5 @@ particle.prototype.update = function() {
 };
 
 particle.prototype.draw = function() {
-    this.context.fillRect(this.x, this.y, 1, 1);
+    this.parent.world.context.fillRect(this.x, this.y, 1, 1);
 };
