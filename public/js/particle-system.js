@@ -1,29 +1,6 @@
-var canvas;
-var context;
-var ps;
-
-var particle = function() {
-	this.x = Math.random() * canvas.width;
-	this.y = Math.random() * canvas.height;
-	
-	this.dx = (Math.random() * 2) - 1;
-	this.dy = (Math.random() * 2) - 1;
-};
-
-particle.prototype.update = function() {
-	if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) {
-	    this.dx = -(this.dx);
-	    this.dy = -(this.dy);
-	}
-	this.x = this.x + this.dx;
-	this.y = this.y + this.dy;
-};
-
-particle.prototype.draw = function() {
-    context.fillRect(this.x, this.y, 1, 1);
-};
-
-var particleSystem = function(amount) {
+var particleSystem = function(canvas, amount) {
+	this.canvas = canvas;
+	this.context = this.canvas.getContext("2d");
 	this.particles = [];
     this.addParticles(1000);
 };
@@ -43,9 +20,9 @@ particleSystem.prototype.draw = function() {
 particleSystem.prototype.addParticles = function(numParticles) {
     console.log("adding ", numParticles);
 	for (var i = 0; i < numParticles; i++) {
-		this.particles.push(new particle());
+		this.particles.push(new particle(this.canvas));
 	}
-	context.clearRect(0, 0, canvas.width, canvas.height);
+	this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	numSpan = document.getElementById("num-particles");
 	numSpan.innerHTML = this.numParticles();
 };
@@ -56,47 +33,10 @@ particleSystem.prototype.removeParticles = function(numParticles) {
 		this.particles.pop();
 	}
 	numSpan = document.getElementById("num-particles");
-	context.clearRect(0, 0, canvas.width, canvas.height);
-	console.log(numSpan);
+	this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	numSpan.innerHTML = this.numParticles();
 };
 
 particleSystem.prototype.numParticles = function() {
     return this.particles.length;
-};
-
-var mainLoop = function(speed) {
-    var self = this;
-    ps = new particleSystem(1000);
-    setInterval(function() {
-        self.update.call(self);
-    }, speed);
-};
-
-mainLoop.prototype.update = function() {
-    ps.update();
-    this.draw();
-};
-
-mainLoop.prototype.draw = function() {
-    canvas.width = canvas.width;
-    ps.draw();
-};
-
-window.onload = function() {
-    canvas = document.getElementById("particles");
-    context = canvas.getContext("2d");
-    m = new mainLoop(10);
-    var addLink = document.getElementById("add-particles");
-    
-    addLink.onclick = function() {
-        ps.addParticles(1000);
-        return false;
-    };
-    
-    var removeLink = document.getElementById("remove-particles");
-    removeLink.onclick = function() {
-        ps.removeParticles(1000);
-        return false;
-    };
 };
