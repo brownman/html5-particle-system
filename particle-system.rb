@@ -8,6 +8,7 @@ get '/' do
   erb :index
 end
 
-get '/experiment-one' do
-  erb :experiment_one
+get '/experiment/:num' do
+  url = "experiment#{params[:num]}".to_sym
+  erb url
 end

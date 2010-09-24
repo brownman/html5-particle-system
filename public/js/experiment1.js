@@ -1,3 +1,8 @@
+// #f36b21
+// #e43c96
+// #70c497
+// #e3b0d1
+
 (function($){
 	canvasEl = $("#particles").get(0);
 	
@@ -8,9 +13,8 @@
 		speed: 33, // 30 FPS
 		fullWindow: true,
 		updated: function() {
-			// alert("updated");
-			// numSpan = document.getElementById("num-particles");
-			// numSpan.innerHTML = this.numParticles();
+			numSpan = $("#num-particles");
+			numSpan.html(this.numParticles());
 		}
 	});
 			
@@ -33,8 +37,6 @@
 		e.preventDefault();
 		world.clear();
 	});
-	
-	$("header").fadeOut(4000);
 })(window.jQuery);
 
 
