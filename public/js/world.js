@@ -1,11 +1,25 @@
-var world = function(options) {
-	this.canvas = options.canvasEl;
+var world = function(options, callbacks) {
+	var defaults = {
+		canvasEl: document.getElementsByTagName("canvas")[0],
+		clearEachFrame: true,
+		fullWindow: false,
+		speed: 66, // 15 FPS
+		initialParticles: 1000
+	};
+	var defaultCallbacks = {
+		worldUpdated: function() { }
+	};
+	console.log(defaults, options);
+	
+	this.options = _.extend({}, defaults, options); // merge options and defaults
+	this.callbacks = _.extend({}, defaultCallbacks, callbacks); // merge callbacks and defaults
+	
+	this.canvas = this.options.canvasEl;
 	this.context = this.canvas.getContext("2d");
-	this.doClearEachFrame = options.clearEachFrame;
-	this.fullWindow = options.fullWindow;
-	this.worldUpdated = options.updated;
-	var self = this;
+	this.clearEachFrame = this.options.clearEachFrame;
 
+	
+	var self = this;
 	if (this.fullWindow) {
 		this.resize(window.innerWidth-20, window.innerHeight-20);
 		window.addEventListener("resize", function() {
@@ -17,7 +31,7 @@ var world = function(options) {
 	
 	setInterval(function() {
         self.update.call(self);
-    }, options.speed);
+    }, self.options.speed);
 };
 
 world.prototype.update = function() {
@@ -26,7 +40,7 @@ world.prototype.update = function() {
 };
 
 world.prototype.draw = function() {
-	if (this.doClearEachFrame) {
+	if (this.clearEachFrame) {
 		this.clear();
 	}
     this.ps.draw();
@@ -38,7 +52,7 @@ world.prototype.clear = function() {
 
 world.prototype.toggleClearEachFrame = function() {
 	this.clear();
-	this.doClearEachFrame = !this.doClearEachFrame;
+	this.clearEachFrame = !this.clearEachFrame;
 };
 
 world.prototype.resize = function(width, height) {

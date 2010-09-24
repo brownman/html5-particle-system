@@ -8,11 +8,12 @@
 	
    	world = new world({
 		canvasEl: canvasEl,
-		initialParticles: 1000,
+		initialParticles: 10000,
 		clearEachFrame: true,
 		speed: 33, // 30 FPS
-		fullWindow: true,
-		updated: function() {
+		fullWindow: true
+		}, {
+		worldUpdated: function() {
 			numSpan = $("#num-particles");
 			numSpan.html(this.numParticles());
 		}

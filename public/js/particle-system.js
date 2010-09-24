@@ -21,7 +21,7 @@ particleSystem.prototype.addParticles = function(numParticles) {
 	for (var i = 0; i < numParticles; i++) {
 		this.particles.push(new particle(this));
 	}
-	this.world.worldUpdated.call(this);
+	this.world.callbacks.worldUpdated.call(this);
 };
 
 particleSystem.prototype.removeParticles = function(numParticles) {
@@ -32,7 +32,7 @@ particleSystem.prototype.removeParticles = function(numParticles) {
 	if (this.particles.length == 0) {
 		this.world.clear();
 	}
-	this.world.worldUpdated.call(this);
+	this.world.callbacks.worldUpdated.call(this);
 };
 
 particleSystem.prototype.numParticles = function() {
