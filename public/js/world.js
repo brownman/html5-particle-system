@@ -4,12 +4,16 @@ var world = function(options, callbacks) {
 		clearEachFrame: true,
 		fullWindow: false,
 		speed: 66, // 15 FPS
-		initialParticles: 1000
+		initialParticles: 1000,
+		colors: ["#000"],
+		particleRadius: 1
 	};
 	var defaultCallbacks = {
-		worldUpdated: function() { }
+		worldUpdated: function() { },
+		drawParticle: function() {
+			this.parent.world.context.fillRect(this.x, this.y, this.radius, this.radius);
+		}
 	};
-	console.log(defaults, options);
 	
 	this.options = _.extend({}, defaults, options); // merge options and defaults
 	this.callbacks = _.extend({}, defaultCallbacks, callbacks); // merge callbacks and defaults
@@ -17,17 +21,17 @@ var world = function(options, callbacks) {
 	this.canvas = this.options.canvasEl;
 	this.context = this.canvas.getContext("2d");
 	this.clearEachFrame = this.options.clearEachFrame;
-
+	console.log("Options:", this.options);
+	console.log("Callbacks: ", this.callbacks);
 	
 	var self = this;
-	if (this.fullWindow) {
+	if (this.options.fullWindow) {
 		this.resize(window.innerWidth-20, window.innerHeight-20);
 		window.addEventListener("resize", function() {
 			self.resize(window.innerWidth-20, window.innerHeight-10);
 		}, false);
-	}
-	
-	this.ps = new particleSystem(this, options.initialParticles);
+	}	
+	this.ps = new particleSystem(this, this.options.initialParticles, this.options.colors, this.options.particleRadius);
 	
 	setInterval(function() {
         self.update.call(self);

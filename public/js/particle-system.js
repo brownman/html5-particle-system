@@ -1,8 +1,17 @@
-var particleSystem = function(world, amount) {
+var particleSystem = function(world, amount, colors, radius) {
 	this.world = world;
 	this.particles = [];
+	this.colors = colors;
+	this.radius = radius;
+	console.log("Particle system: ", this);
     this.addParticles(amount);
 };
+
+particleSystem.prototype.getColor = function() {
+	var index = Math.floor(Math.random() * this.colors.length);
+	return this.world.options.colors[index];
+};
+
 
 particleSystem.prototype.update = function() {
 	for (i = 0; i < this.particles.length; i++) {
@@ -19,7 +28,8 @@ particleSystem.prototype.draw = function() {
 particleSystem.prototype.addParticles = function(numParticles) {
     log("adding ", numParticles);
 	for (var i = 0; i < numParticles; i++) {
-		this.particles.push(new particle(this));
+		var color = this.getColor();
+		this.particles.push(new particle(this, color, this.radius));
 	}
 	this.world.callbacks.worldUpdated.call(this);
 };

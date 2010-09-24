@@ -1,8 +1,3 @@
-// #f36b21
-// #e43c96
-// #70c497
-// #e3b0d1
-
 (function($){
 	canvasEl = $("#particles").get(0);
 	

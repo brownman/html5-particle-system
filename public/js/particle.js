@@ -1,11 +1,14 @@
-var particle = function(parent) {
-	this.world = world;
+var particle = function(parent, color, radius) {
 	this.parent = parent;
+	this.ctx = this.parent.world.context;
 	this.x = Math.random() * this.parent.world.canvas.width;
 	this.y = Math.random() * this.parent.world.canvas.height;
 
 	this.dx = (Math.random() * 2) - 1;
 	this.dy = (Math.random() * 2) - 1;
+	
+	this.color = color;
+	this.radius = radius;
 };
 
 particle.prototype.update = function() {
@@ -18,5 +21,6 @@ particle.prototype.update = function() {
 };
 
 particle.prototype.draw = function() {
-    this.parent.world.context.fillRect(this.x, this.y, 1, 1);
+	this.ctx.fillStyle = this.color;
+	this.parent.world.callbacks.drawParticle.call(this);
 };

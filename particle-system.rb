@@ -9,6 +9,8 @@ get '/' do
 end
 
 get '/experiment/:num' do
-  url = "experiment#{params[:num]}".to_sym
+  experiment = "experiment#{params[:num]}"
+  @filepath = "/js/#{experiment}.js"
+  url = experiment.to_sym
   erb url
 end
