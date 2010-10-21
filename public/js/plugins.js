@@ -3,8 +3,6 @@
 	
 })(window.jQuery);
 
-
-
 // usage: log('inside coolFunc',this,arguments);
 // paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
 window.log = function(){
@@ -14,8 +12,6 @@ window.log = function(){
     console.log( Array.prototype.slice.call(arguments) );
   }
 };
-
-
 
 // catch all document.write() calls
 (function(doc){

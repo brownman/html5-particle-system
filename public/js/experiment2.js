@@ -20,7 +20,6 @@
 			ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true); 
 			ctx.closePath();
 			ctx.fill();
-			// this.parent.world.context.fillRect(this.x, this.y, 10, 10);
 		}
 	});
 })(window.jQuery);
