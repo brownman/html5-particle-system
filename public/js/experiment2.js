@@ -12,7 +12,7 @@
 		clearEachFrame: true,
 		speed: 33, // 30 FPS
 		fullWindow: true,
-		colors: ["#f36b21", "#e43c96", "#70c497", "#e3b0d1"],
+		colors: ["#ff6b00", "#ff3b94", "#58deac", "#d7afff", "#9f6fd9", "#6fc330", "#ffff00", "#ff0000", "#74b1ad", "#808083"],
 		particleRadius: 3
 		}, {
 		worldUpdated: function() {
@@ -26,6 +26,20 @@
 			ctx.closePath();
 			ctx.fill();
 		}
+	});
+	
+	$(document).keydown(function(event) {
+		var keyDown = event.which;
+		var eventMap = {
+			65: world.ps.addParticles,
+			68: world.ps.removeParticles
+		};
+
+		var method = _(eventMap).detect(function(value, key) {
+			return keyDown == key;
+		});
+
+		method.call(world.ps, 100);
 	});
 })(window.jQuery);
 
