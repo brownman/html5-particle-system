@@ -36,10 +36,10 @@
 		};
 
 		var method = _(eventMap).detect(function(value, key) {
-			return keyDown == key;
+			return ((keyDown == key) && value != undefined);
 		});
-
-		method.call(world.ps, 100);
+		
+		if (method) method.call(world.ps, 100);
 	});
 })(window.jQuery);
 
