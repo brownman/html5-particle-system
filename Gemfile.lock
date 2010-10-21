@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     configuration (1.1.0)
+    giternal (0.1.0)
     heroku (1.10.4)
       json_pure (>= 1.2.0, < 1.5.0)
       launchy (~> 0.3.2)
@@ -24,6 +25,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  giternal
   heroku
   shotgun
   sinatra

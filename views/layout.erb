@@ -29,7 +29,7 @@
 
  
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
-  <script src="/js/modernizr-1.5.min.js"></script>
+  <script src="/js/lib/modernizr-1.5.min.js"></script>
 
 </head>
 
@@ -48,10 +48,13 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script>!window.jQuery && document.write('<script src="js/lib/jquery-1.4.2.min.js"><\/script>');</script>
 	<script src="/js/lib/underscore.js"></script>
-  <script src="/js/plugins.js?v=1"></script>
+	<script src="/js/lib/externals/tween.js/build/Tween.js"></script>
+  
   <script src="/js/particle-system/particle.js"></script>
   <script src="/js/particle-system/particle-system.js"></script>
   <script src="/js/particle-system/world.js"></script>
+  
+  <script src="/js/plugins.js?v=1"></script>
 	<% if @filepath %>
   	<script src="<%= @filepath %>"></script>
 	<% end %>

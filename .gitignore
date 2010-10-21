@@ -2,3 +2,6 @@ bin/
 .bundle/
 .DS_Store
 *.tmproj
+
+
+public/js/lib/externals/tween.js

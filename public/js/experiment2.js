@@ -1,7 +1,12 @@
 (function($){
 	canvasEl = $("#particles").get(0);
 	
-   	world = new world({
+	// testing tween.js
+	var position = { x: 0 };
+	var tween = new TWEEN.Tween(position).to({x: 400}, 2000).start();
+	console.info("Tween: ", tween);
+	
+	world = new world({
 		canvasEl: canvasEl,
 		initialParticles: 100,
 		clearEachFrame: true,
